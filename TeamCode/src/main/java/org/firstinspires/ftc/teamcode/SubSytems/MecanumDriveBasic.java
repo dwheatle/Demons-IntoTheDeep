@@ -23,7 +23,7 @@ public class MecanumDriveBasic {
      * @param rightRear
      */
     public MecanumDriveBasic(DcMotorEx leftFront, DcMotorEx leftRear, DcMotorEx rightFront, DcMotorEx rightRear) {
-int x = 0;
+
         this.leftFront  = leftFront;
         this.leftRear   = leftRear;
         this.rightFront = rightFront;
