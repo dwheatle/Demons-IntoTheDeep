@@ -29,7 +29,7 @@ public class DevOpBasicMecDrive extends RobotConfig {
             telemetry.addData("Drive Authority: ", degradeDriveButton.state() ? "Degraded" : "Normal");
             telemetry.update();
 
-            sleep(20);
+            sleep(25);
         }
     }
 }
