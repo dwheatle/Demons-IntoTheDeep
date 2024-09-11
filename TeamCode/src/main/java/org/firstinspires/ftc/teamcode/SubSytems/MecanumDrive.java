@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.SubSytems;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
-public class MecanumDriveBasic {
+public class MecanumDrive {
 
     private final DcMotorEx leftFront, leftRear, rightFront, rightRear;
     private double drive, strafe, turn;
@@ -15,6 +15,7 @@ public class MecanumDriveBasic {
 
     private double driveAuthority, strafeAuthority, turnAuthority;
 
+
     /**
      * CONSTRUCTOR
      * @param leftFront
@@ -22,7 +23,7 @@ public class MecanumDriveBasic {
      * @param rightFront
      * @param rightRear
      */
-    public MecanumDriveBasic(DcMotorEx leftFront, DcMotorEx leftRear, DcMotorEx rightFront, DcMotorEx rightRear) {
+    public MecanumDrive(DcMotorEx leftFront, DcMotorEx leftRear, DcMotorEx rightFront, DcMotorEx rightRear) {
 
         this.leftFront  = leftFront;
         this.leftRear   = leftRear;
@@ -40,6 +41,7 @@ public class MecanumDriveBasic {
         drive = strafe = turn = 0;
     }
 
+
     /**
      * Drive robot using mecanum drive wheels
      * @param driveCmd
@@ -49,15 +51,19 @@ public class MecanumDriveBasic {
      */
     public void mecanumDrive(double driveCmd, double strafeCmd, double turnCmd, boolean degradedMode) {
 
-        if(!degradedMode) {
-            drive = driveCmd;
-            strafe = strafeCmd;
-            turn = turnCmd;
-        } else {
-            drive = driveCmd * DEGRADED_DRIVE_LIMIT;
-            strafe = strafeCmd * DEGRADED_STRAFE_LIMIT;
-            turn = turnCmd * DEGRADED_TURN_LIMIT;
-        }
+        drive  = (degradedMode) ? driveCmd  * DEGRADED_DRIVE_LIMIT  : driveCmd;
+        strafe = (degradedMode) ? strafeCmd * DEGRADED_STRAFE_LIMIT : strafeCmd;
+        turn   = (degradedMode) ? turnCmd   * DEGRADED_TURN_LIMIT   : turnCmd;
+        
+//        if(!degradedMode) {
+//            drive = driveCmd;
+//            strafe = strafeCmd;
+//            turn = turnCmd;
+//        } else {
+//            drive = driveCmd * DEGRADED_DRIVE_LIMIT;
+//            strafe = strafeCmd * DEGRADED_STRAFE_LIMIT;
+//            turn = turnCmd * DEGRADED_TURN_LIMIT;
+//        }
 
         double denominator = Math.max(Math.abs(driveCmd) + Math.abs(strafeCmd) + Math.abs(turnCmd), 1);
         double frontLeftPower  = (drive + strafe + turn) / denominator;
@@ -67,6 +73,7 @@ public class MecanumDriveBasic {
 
         setMotorPower(frontLeftPower, frontRightPower, backLeftPower, backRightPower);
     }
+
 
     /**
      * Sets power to the four drive motors

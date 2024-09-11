@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Cogintilities.VisionProcessors.VisionPortalObject;
-import org.firstinspires.ftc.teamcode.SubSytems.MecanumDriveBasic;
+import org.firstinspires.ftc.teamcode.SubSytems.MecanumDrive;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public abstract class RobotConfig extends LinearOpMode {
     through autonomous and teleOp modes */
 
     /*----------- Define all Module Classes (SubSystems) -----------*/
-    protected MecanumDriveBasic drive = null;
+    protected MecanumDrive drive = null;
     protected VisionPortalObject vision = null;
     /* keyword 'protected' is similar to 'private'. Private variables are only accessible within the
     scope of this class. Protected allows for all classes that extend or inherit from this class to
@@ -66,7 +66,7 @@ public abstract class RobotConfig extends LinearOpMode {
         WebcamName webCam  = hardwareMap.get(WebcamName.class, "Webcam1");
 
         /** Create an object of every module/subsystem needed for both autonomous and teleOp modes. **/
-        drive  = new MecanumDriveBasic(driveMotorLF, driveMotorLR, driveMotorRF, driveMotorRR);
+        drive  = new MecanumDrive(driveMotorLF, driveMotorLR, driveMotorRF, driveMotorRR);
         vision = new VisionPortalObject(webCam);
     }
 
