@@ -28,8 +28,8 @@ public class DevOpButtonTesting extends RobotConfig {
         waitForStart();
 
         while (opModeIsActive()) {
-            momButton.update(gamepad1.a);
-            togButton.update(gamepad1.b);
+
+            updateButtons();
 
             telemetry.addData("Momentary Button Value:", momButton.state());
             telemetry.addData("Toggle Button Value:   ", togButton.state());
@@ -37,5 +37,10 @@ public class DevOpButtonTesting extends RobotConfig {
 
             sleep(50);
         }
+    }
+    
+    private void updateButtons() {
+        momButton.update(gamepad1.a);
+        togButton.update(gamepad1.b);
     }
 }
