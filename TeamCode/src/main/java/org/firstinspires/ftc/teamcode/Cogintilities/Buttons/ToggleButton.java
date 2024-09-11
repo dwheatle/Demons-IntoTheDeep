@@ -4,9 +4,9 @@ public class ToggleButton extends ButtonBaseClass {
 
     /**
      * /////////////////////////// CONSTRUCTOR \\\\\\\\\\\\\\\\\\\\\\\\\\\
-     * The value of this button will activate high every when the physical button is
+     * The value of this button will activate high when the physical button is
      * pressed and will remain high until the button is pressed again.  Setting invertOutput will
-     * reverse the behavior.     *
+     * reverse the behavior.
      * @param initialState - Initialize Button Value to True or False
      * @param invertOutput - Invert the Output State of the Button
      **/
