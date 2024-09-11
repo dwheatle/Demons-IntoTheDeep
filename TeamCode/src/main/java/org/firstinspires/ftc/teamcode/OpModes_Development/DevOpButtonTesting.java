@@ -38,7 +38,11 @@ public class DevOpButtonTesting extends RobotConfig {
             sleep(50);
         }
     }
-    
+
+
+    /**
+     * Update all Button objects here to reduce clutter in the main loop
+     */
     private void updateButtons() {
         momButton.update(gamepad1.a);
         togButton.update(gamepad1.b);
