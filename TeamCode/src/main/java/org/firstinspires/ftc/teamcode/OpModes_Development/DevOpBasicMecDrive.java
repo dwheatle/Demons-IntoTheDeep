@@ -25,6 +25,10 @@ public class DevOpBasicMecDrive extends RobotConfig {
                                  gamepad1.left_stick_x,
                                  gamepad1.right_stick_x,
                                  degradeDriveButton.state());
+
+            telemetry.addData("Drive Authority: ", degradeDriveButton.state() ? "Degraded" : "Normal");
+            telemetry.update();
+
             sleep(20);
         }
     }
