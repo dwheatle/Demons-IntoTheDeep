@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 public class MecanumDrive {
 
     private final DcMotorEx leftFront, leftRear, rightFront, rightRear;
-    private double drive, strafe, turn;
+    private double drive, strafe, turn, k;
 
     /**************** Drive Constants ****************/
     private final double DEGRADED_DRIVE_LIMIT  = 0.55;
