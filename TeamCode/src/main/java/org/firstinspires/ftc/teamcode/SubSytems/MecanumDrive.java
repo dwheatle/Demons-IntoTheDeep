@@ -13,15 +13,13 @@ public class MecanumDrive {
     private final double DEGRADED_TURN_LIMIT   = 0.35;
     /*************************************************/
 
-    private double driveAuthority, strafeAuthority, turnAuthority;
-
 
     /**
-     * CONSTRUCTOR
-     * @param leftFront
-     * @param leftRear
-     * @param rightFront
-     * @param rightRear
+     * CONSTRUCTOR Create a mecanum drive object using four motors
+     * @param leftFront Left front motor name from the hardware map
+     * @param leftRear Left rear motor name from the hardware map
+     * @param rightFront Right front motor name from the hardware map
+     * @param rightRear Right rear motor name from the hardware map
      */
     public MecanumDrive(DcMotorEx leftFront, DcMotorEx leftRear, DcMotorEx rightFront, DcMotorEx rightRear) {
 
@@ -43,11 +41,14 @@ public class MecanumDrive {
 
 
     /**
-     * Drive robot using mecanum drive wheels
-     * @param driveCmd
-     * @param strafeCmd
-     * @param turnCmd
-     * @param degradedMode
+     * Drive robot using mecanum drive wheels. Calculates the motor power required for the given
+     * inputs and reduces power if the degradedMode is true. This is intended to use joystick inputs
+     * for the commands and range between 0.0 and 1.0.  There are no checks to ensure the values are in
+     * range.
+     * @param driveCmd Drive command, typically gamepad.left_stick_y (negated)
+     * @param strafeCmd Strafe command, typically gamepad.Left_stick_x
+     * @param turnCmd Turn command, typically gamepad.Right_stick_s
+     * @param degradedMode Drive operates at reduced power when set to True
      */
     public void mecanumDrive(double driveCmd, double strafeCmd, double turnCmd, boolean degradedMode) {
 
@@ -76,11 +77,11 @@ public class MecanumDrive {
 
 
     /**
-     * Sets power to the four drive motors
-     * @param lfPower
-     * @param rfPower
-     * @param lrPower
-     * @param rrPower
+     * Sets the power level of the four drive motors. Input must range between 0.0 and 1.0
+     * @param lfPower Left front motor power
+     * @param rfPower right front motor power
+     * @param lrPower left rear motor power
+     * @param rrPower right rear motor power
      */
     private void setMotorPower(double lfPower,double rfPower, double lrPower, double rrPower) {
         leftFront.setPower(lfPower);
